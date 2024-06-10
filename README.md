@@ -26,3 +26,4 @@ Use python to plot iteration number vs recent average error:
     python3 plot_simulation_results.py
 ```
 
+![Figure_1](https://github.com/bartboogmans/SimpleNeuralNetwork/assets/5917472/dcb5eb31-ac09-4ebc-8213-6934ab3b3e02)
