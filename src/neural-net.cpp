@@ -53,7 +53,6 @@ TrainingData::TrainingData(const string filename)
 	m_trainingDataFile.open(filename.c_str());
 }
 
-
 unsigned TrainingData::getNextInputs(vector<double> &inputVals)
 {
     inputVals.clear();
@@ -391,5 +390,30 @@ int main()
 	}
 
 	cout << endl << "Done" << endl;
+	// now give some info on the net, starting with topology
+	cout << "Topology: ";
+	for(unsigned i = 0; i < topology.size(); ++i)
+	{
+		cout << topology[i] << " ";
+	}
+	cout << endl;
 
+	// Now test the net with some values
+	// advancing to evaluating the net.
+	// generate output for x= -6: 6, y = -6: 6 in 20 steps
+	double steps = 30;
+	double min = -6;
+	double max = 6;
+	double step = (max - min) / steps;
+	for(int i = 0; i < steps; ++i)
+	{
+		for(int j = 0; j < steps; ++j)
+		{
+			double x = min + i * step;
+			double y = min + j * step;
+			myNet.feedForward(vector<double>{x, y});
+			myNet.getResults(resultVals);
+			cout << x << "," << y << "," << resultVals[0] << endl;
+		}
+	}
 }
